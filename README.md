@@ -11,3 +11,5 @@ Install this plugin in the same environment as Datasette to enable this new func
     pip install datasette-render-binary
 
 Binary data in cells will now be rendered as a mixture of characters and octets.
+
+![Screenshot](https://raw.githubusercontent.com/simonw/datasette-render-binary/master/screenshot.png)
