@@ -23,7 +23,7 @@ setup(
     version=VERSION,
     packages=["datasette_render_binary"],
     entry_points={"datasette": ["render_binary = datasette_render_binary"]},
-    install_requires=["datasette"],
+    install_requires=["datasette", "filetype"],
     extras_require={"test": ["pytest"]},
     tests_require=["datasette-render-binary[test]"],
 )
