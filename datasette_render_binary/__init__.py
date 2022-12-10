@@ -1,7 +1,7 @@
 import re
 import filetype
 from datasette import hookimpl
-import jinja2
+from markupsafe import escape, Markup
 
 sequence_re = re.compile(r"((?:\\x[0-9a-f]{2})+)")
 octet_re = re.compile(r"(\\x[0-9a-f]{2})")
@@ -26,7 +26,7 @@ def render_cell(value):
     if suggestion:
         html.append(
             '<p style="margin-top: 0; font-family: monospace; font-size: 0.8em;">Suggestion: {}</p>'.format(
-                jinja2.escape(suggestion)
+                escape(suggestion)
             )
         )
     for chunk in chunks:
@@ -39,5 +39,5 @@ def render_cell(value):
                 )
             )
         else:
-            html.append(jinja2.escape(chunk.replace("\\\\", "\\")))
-    return jinja2.Markup(" ".join(html).strip())
+            html.append(escape(chunk.replace("\\\\", "\\")))
+    return Markup(" ".join(html).strip())
